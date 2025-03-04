@@ -1,5 +1,5 @@
-package uni;
-import java.util.ArrayList;
+package uni ;
+import java.util.ArrayList ;
 
 public class Professor {
     public int professorID ;
@@ -15,6 +15,12 @@ public class Professor {
     }
 
     public static Professor findById(int ID){
-        return professorList.get(ID - 1) ;
+        if((professorList.size() >= ID) && (ID >= 0)) {
+            return professorList.get(ID - 1) ;
+        }
+        else
+        {
+            return null ;
+        }
     }
 }

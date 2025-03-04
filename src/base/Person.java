@@ -1,5 +1,5 @@
-package base;
-import java.util.ArrayList;
+package base ;
+import java.util.ArrayList ;
 
 public class Person {
     public int personID ;
@@ -15,6 +15,12 @@ public class Person {
     }
 
     public static Person findById(int ID) {
-        return personList.get(ID - 1) ;
+        if((personList.size() >= ID) && (ID >= 0)) {
+            return personList.get(ID - 1) ;
+        }
+        else
+        {
+            return null ;
+        }
     }
 }

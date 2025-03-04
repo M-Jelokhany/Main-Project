@@ -1,5 +1,5 @@
-package uni;
-import java.util.ArrayList;
+package uni ;
+import java.util.ArrayList ;
 
 public class Course {
     public int courseID ;
@@ -15,6 +15,12 @@ public class Course {
     }
 
     public static Course findById(int ID){
-        return courseList.get(ID - 1) ;
+        if((courseList.size() >= ID) && (ID >= 0)) {
+            return courseList.get(ID - 1) ;
+        }
+        else
+        {
+            return null ;
+        }
     }
 }

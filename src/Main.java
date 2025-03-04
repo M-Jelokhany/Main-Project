@@ -1,5 +1,7 @@
 import base.Person ;
-import uni.*;
+import uni.* ;
+
+import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,15 +18,15 @@ public class Main {
        Student Reza = new Student(2 , 403 , 1) ;
        Student Farhad = new Student(3 , 403 , 2) ;
 
-       System.out.println(Person.findById(Ali.personID).name + " " + Ali.studentCode) ;
-       System.out.println(Person.findById(Reza.personID).name + " " +  Reza.studentCode) ;
-       System.out.println(Person.findById(Farhad.personID).name + " " + Farhad.studentCode) ;
+       System.out.println(Objects.requireNonNull(Person.findById(Ali.personID)).name + " " + Ali.studentCode) ;
+       System.out.println(Objects.requireNonNull(Person.findById(Reza.personID)).name + " " +  Reza.studentCode) ;
+       System.out.println(Objects.requireNonNull(Person.findById(Farhad.personID)).name + " " + Farhad.studentCode) ;
 
        Professor Amir = new Professor(4 , 1) ;
        Professor Hashem = new Professor(5 , 2) ;
 
-       System.out.println(Person.findById(Amir.personID).name + " " + Amir.professorID) ;
-       System.out.println(Person.findById(Hashem.personID).name + " " + Hashem.professorID) ;
+       System.out.println(Objects.requireNonNull(Person.findById(Amir.personID)).name + " " + Amir.professorID) ;
+       System.out.println(Objects.requireNonNull(Person.findById(Hashem.personID)).name + " " + Hashem.professorID) ;
 
        Course AP = new Course("Advance Programming" , 3) ;
        Course Math = new Course("Math 1" , 3) ;
@@ -58,9 +60,9 @@ public class Main {
        rezaTranscript.printTranscript() ;
        farhadTranscript.printTranscript() ;
 
-       System.out.println(Person.findById(Student.findById(aliTranscript.studentID).personID).name + "'s" + " GPA" + " : " + aliTranscript.getGPA()) ;
-       System.out.println(Person.findById(Student.findById(rezaTranscript.studentID).personID).name + "'s" + " GPA" + " : " + rezaTranscript.getGPA()) ;
-       System.out.println(Person.findById(Student.findById(farhadTranscript.studentID).personID).name + "'s" + " GPA" + " : " + farhadTranscript.getGPA()) ;
+       System.out.println(Objects.requireNonNull(Person.findById(Objects.requireNonNull(Student.findById(aliTranscript.studentID)).personID)).name + "'s" + " GPA" + " : " + aliTranscript.getGPA()) ;
+       System.out.println(Objects.requireNonNull(Person.findById(Objects.requireNonNull(Student.findById(rezaTranscript.studentID)).personID)).name + "'s" + " GPA" + " : " + rezaTranscript.getGPA()) ;
+       System.out.println(Objects.requireNonNull(Person.findById(Objects.requireNonNull(Student.findById(farhadTranscript.studentID)).personID)).name + "'s" + " GPA" + " : " + farhadTranscript.getGPA()) ;
 
     }
 }

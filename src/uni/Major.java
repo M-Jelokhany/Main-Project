@@ -1,27 +1,36 @@
-package uni;
-import java.util.ArrayList;
+package uni ;
+import java.util.ArrayList ;
 
 public class Major {
     public int majorID ;
     public static ArrayList<Major> majorList = new ArrayList<>() ;
     public String name ;
-    public final int maxCapacity ;
+    public final int capacity;
     public int numberOfStudents = 0 ;
 
-    public Major(String name , int maxStudentNumber){
+    public Major(String name , int capacity){
         this.name = name ;
-        maxCapacity = maxStudentNumber ;
+        this.capacity = capacity ;
         majorList.add(this) ;
         majorID = majorList.size() ;
     }
 
     public static Major findById(int ID){
-        return majorList.get(ID - 1) ;
+        if((majorList.size() >= ID) && (ID >= 0)) {
+            return majorList.get(ID - 1) ;
+        }
+        else
+        {
+            return null ;
+        }
     }
 
     public void addStudent(){
-        numberOfStudents += 1 ;
-        if(numberOfStudents == maxCapacity){
+        if(numberOfStudents < capacity){
+            numberOfStudents += 1 ;
+        }
+        else
+        {
             System.out.println("Completion of capacity") ;
         }
     }

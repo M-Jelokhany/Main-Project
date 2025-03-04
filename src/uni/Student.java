@@ -1,5 +1,6 @@
-package uni;
-import java.util.ArrayList;
+package uni ;
+import java.util.ArrayList ;
+import java.util.Objects;
 
 public class Student {
     public int studentID ;
@@ -13,17 +14,23 @@ public class Student {
         this.personID = personID ;
         this.entranceYear = entranceYear ;
         this.majorID = majorID ;
-        Major.findById(majorID).addStudent() ;
+        Objects.requireNonNull(Major.findById(majorID)).addStudent() ;
         setStudentCode() ;
         studentList.add(this) ;
         studentID = studentList.size() ;
     }
 
     public static Student findById(int ID){
-        return studentList.get(ID - 1) ;
+        if((studentList.size() >= ID) && (ID >= 0)) {
+            return studentList.get(ID - 1) ;
+        }
+        else
+        {
+            return null ;
+        }
     }
 
-    public void setStudentCode(){
-        studentCode = String.valueOf((entranceYear * 10000) + (majorID * 100) + (Major.findById(majorID).numberOfStudents) ) ;
+    public void setStudentCode() {
+        studentCode = String.valueOf((entranceYear * 10000) + (majorID * 100) + (Objects.requireNonNull(Major.findById(majorID)).numberOfStudents)) ;
     }
 }
